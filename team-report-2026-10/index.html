@@ -1131,12 +1131,12 @@ document.getElementById('hrProjects').innerHTML =
     </tr>`;
   }).join('') + '</tbody>';
 
-const NOSYS = H.risks.nosys.filter(x=>x.hours>=1);
+const NOSYS = H.risks.nosys;
 document.getElementById('pjNote').innerHTML =
   `当月合计 <b style="color:var(--text)">${M.projectCount}</b> 个有工时投入的客户项目，` +
   `其中 <b>${K.nextPlan.planned}</b> 个已排 ${NM}（覆盖当月投入 <b style="color:var(--text)">${K.nextPlan.hours}h</b>）。` +
   (NOSYS.length ? `另有 <b>${NOSYS.length}</b> 个项目未纳入月度预定体系（多为按需维护/被动响应型，不计入风险）：` +
-    NOSYS.slice(0,8).map(x=>x.project+' '+x.hours+'h').join('、') + '。' : '');
+    NOSYS.map(x=>x.project+' '+x.hours+'h').join('、') + '。' : '');
 
 /* --- 成员工作梳理 --- */
 document.getElementById('hrMemPlan').innerHTML = H.memberPlan.map(mp=>{
